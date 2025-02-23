@@ -2,8 +2,8 @@
 
 @section('content')
     {{-- <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-        @if (Route::has('login'))
-            <nav class="-mx-3 flex flex-1 justify-end">
+        @if (Route::has('/'))
+            <nav class="-mx-3 flex flex-1 ">
                 @auth
                     <a href="{{ url('/dashboard') }}"
                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
@@ -43,6 +43,11 @@
                 <textarea name="problem_description" class="w-full border p-2 rounded mb-4" required></textarea>
 
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+            </form>
+
+            <form action="{{ url('/ticket/status') }}" method="GET">
+                @csrf
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Check Ticket</button>
             </form>
 
         </div>

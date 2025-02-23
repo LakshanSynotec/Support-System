@@ -9,15 +9,27 @@
 </head>
 
 <body class="bg-gray-100">
-    <nav class="bg-blue-600 p-4 text-white flex justify-between">
-        <a href="/" class="text-lg font-bold">Support System</a>
-        @auth
+    <nav class="bg-blue-600 p-4 text-white flex justify-between ">
+        <a href="/" class="text-lg font-bold ">Support System</a>
+        {{-- @auth --}}
+            {{-- <form action="{{ url('auth/login') }}" method="GET">
+                @csrf
+                <button type="submit" class="bg-red-500 px-4 py-2 rounded">Login</button>
+            </form> --}}
+            <form action="{{ url('/dashboard') }}" method="GET">
+                @csrf
+                <button type="submit" class="bg-red-500 px-4 py-2 rounded">Dashboard</button>
+            </form>
+            {{-- <form action="{{ url('ticket/create') }}" method="POST">
+                @csrf
+                <button type="submit" class="bg-red-500 px-4 py-2 rounded">Get Ticket</button>
+            </form> --}}
             <form action="{{ url('/logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="bg-red-500 px-4 py-2 rounded">Logout</button>
             </form>
-        @endauth
-        <a href="{{ url('/login') }}">Login</a>
+        {{-- @endauth --}}
+        {{-- <a href="{{ url('/login') }}">Login</a> --}}
     </nav>
 
     <div class="container mx-auto mt-6">

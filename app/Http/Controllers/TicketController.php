@@ -42,6 +42,32 @@ class TicketController extends Controller {
         return view('tickets.show', compact('ticket'));
     }
 
+    public function edit(Ticket $ticket, Request $request){
+        return view('tickets.edit',compact('ticket'));
+    }
+
+    public function update(Request $request, Ticket $ticket)
+    {
+        $request->validate([
+            'status' => 'required|in:open,in_progress,resolved,closed',
+
+        ]);
+
+        $ticket->update([
+            'status' => $request->status,
+
+        ]);
+
+        return redirect('/ticket/' . $ticket->id)->with('success', 'Ticket updated successfully!');
+    }
+
+    public function destroy(Ticket $ticket)
+    {
+        $ticket->delete();
+        return redirect()->route('tickets.create')->with('success', 'Ticket deleted successfully!');
+    }
+
+
     public function status() {
         return view('tickets.status');
     }

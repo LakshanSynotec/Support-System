@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('phone');
             $table->text('problem_description');
             $table->string('reference_number')->unique();
-            $table->enum('status', ['open', 'closed'])->default('open');
+            $table->enum('status', ['open','in progress','resolved', 'closed'])->default('open');
             $table->timestamps();
         });
     }

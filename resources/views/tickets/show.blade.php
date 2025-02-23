@@ -9,7 +9,7 @@
         <p><strong>Phone:</strong> {{ $ticket->phone }}</p>
         <p><strong>Issue:</strong> {{ $ticket->problem_description }}</p>
 
-        <h3 class="text-lg font-bold mt-4">Replies</h3>
+        <h2 class="text-lg font-bold mt-4">Replies</h2>
         @foreach ($ticket->replies as $reply)
             <div class="bg-gray-100 p-3 rounded my-2">
                 <p>{{ $reply->message }}</p>
@@ -23,5 +23,11 @@
 
             <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Send Reply</button>
         </form>
+        <form action="{{ route('ticket.destroy', $ticket->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this ticket?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded">Delete Ticket</button>
+        </form>
+
     </div>
 @endsection
